@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4340528dab88d1f675894d9c50f6a078",
+    "content-hash": "06a71a5617137d32562424e7a0d51de6",
     "packages": [
         {
             "name": "cakephp/authentication",
@@ -837,30 +837,30 @@
         },
         {
             "name": "laminas/laminas-httphandlerrunner",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-httphandlerrunner.git",
-                "reference": "4d337cde83e6b901a4443b0ab5c3b97cbaa46413"
+                "reference": "eb670c5c7167cd218c61a8b4f6ab9ce339200c16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-httphandlerrunner/zipball/4d337cde83e6b901a4443b0ab5c3b97cbaa46413",
-                "reference": "4d337cde83e6b901a4443b0ab5c3b97cbaa46413",
+                "url": "https://api.github.com/repos/laminas/laminas-httphandlerrunner/zipball/eb670c5c7167cd218c61a8b4f6ab9ce339200c16",
+                "reference": "eb670c5c7167cd218c61a8b4f6ab9ce339200c16",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ~8.0.0 || ~8.1.0",
+                "php": "^7.4 || ~8.0.0 || ~8.1.0",
                 "psr/http-message": "^1.0",
                 "psr/http-message-implementation": "^1.0",
                 "psr/http-server-handler": "^1.0"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.3.0",
-                "laminas/laminas-diactoros": "^2.8.0",
-                "phpunit/phpunit": "^9.5.9",
-                "psalm/plugin-phpunit": "^0.16.1",
-                "vimeo/psalm": "^4.10.0"
+                "laminas/laminas-coding-standard": "~2.4.0",
+                "laminas/laminas-diactoros": "^2.13.0",
+                "phpunit/phpunit": "^9.5.21",
+                "psalm/plugin-phpunit": "^0.17.0",
+                "vimeo/psalm": "^4.24.0"
             },
             "type": "library",
             "extra": {
@@ -900,7 +900,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-22T09:27:36+00:00"
+            "time": "2022-09-17T16:24:51+00:00"
         },
         {
             "name": "league/container",
@@ -1166,16 +1166,16 @@
         },
         {
             "name": "mirko-pagliai/cakephp-thumber",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mirko-pagliai/cakephp-thumber.git",
-                "reference": "e310aa8e54516431ddd54da41300dfc277e85fe7"
+                "reference": "5fd611398545a84744a72684496a7545bec5b1a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mirko-pagliai/cakephp-thumber/zipball/e310aa8e54516431ddd54da41300dfc277e85fe7",
-                "reference": "e310aa8e54516431ddd54da41300dfc277e85fe7",
+                "url": "https://api.github.com/repos/mirko-pagliai/cakephp-thumber/zipball/5fd611398545a84744a72684496a7545bec5b1a2",
+                "reference": "5fd611398545a84744a72684496a7545bec5b1a2",
                 "shasum": ""
             },
             "require": {
@@ -1187,7 +1187,9 @@
             },
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "^4.0",
-                "phpunit/phpunit": "^9.1|^9.5"
+                "phpstan/phpstan": "^1.7",
+                "phpunit/phpunit": "^9.1|^9.5",
+                "psalm/phar": "^4.24"
             },
             "type": "cakephp-plugin",
             "autoload": {
@@ -1209,26 +1211,26 @@
             "homepage": "https://github.com/mirko-pagliai/cakephp-thumber",
             "support": {
                 "issues": "https://github.com/mirko-pagliai/cakephp-thumber/issues",
-                "source": "https://github.com/mirko-pagliai/cakephp-thumber/tree/1.10.1"
+                "source": "https://github.com/mirko-pagliai/cakephp-thumber/tree/1.10.2"
             },
-            "time": "2022-06-21T15:26:31+00:00"
+            "time": "2022-09-22T14:15:25+00:00"
         },
         {
             "name": "mirko-pagliai/me-tools",
-            "version": "2.21.2",
+            "version": "2.21.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mirko-pagliai/me-tools.git",
-                "reference": "387c6edc8c0beb1714a2c8009f26adcea953a520"
+                "reference": "7e44ee056bc7f02a3b39d6a61b869f0ddd660b18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mirko-pagliai/me-tools/zipball/387c6edc8c0beb1714a2c8009f26adcea953a520",
-                "reference": "387c6edc8c0beb1714a2c8009f26adcea953a520",
+                "url": "https://api.github.com/repos/mirko-pagliai/me-tools/zipball/7e44ee056bc7f02a3b39d6a61b869f0ddd660b18",
+                "reference": "7e44ee056bc7f02a3b39d6a61b869f0ddd660b18",
                 "shasum": ""
             },
             "require": {
-                "cakephp/cakephp": "^4.2",
+                "cakephp/cakephp": "^4.3",
                 "mirko-pagliai/php-tools": "^1.6",
                 "php": ">=7.4"
             },
@@ -1237,7 +1239,7 @@
             },
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "^4.5",
-                "mirko-pagliai/cakephp-assets": "^1.5.4",
+                "mirko-pagliai/cakephp-assets": "^1.5.7",
                 "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.1|^9.5",
                 "psalm/phar": "^4.24"
@@ -1273,22 +1275,22 @@
             "homepage": "https://github.com/mirko-pagliai/me-tools",
             "support": {
                 "issues": "https://github.com/mirko-pagliai/me-tools/issues",
-                "source": "https://github.com/mirko-pagliai/me-tools/tree/2.21.2"
+                "source": "https://github.com/mirko-pagliai/me-tools/tree/2.21.3"
             },
-            "time": "2022-07-13T15:02:29+00:00"
+            "time": "2022-09-20T16:49:02+00:00"
         },
         {
             "name": "mirko-pagliai/php-thumber",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mirko-pagliai/php-thumber.git",
-                "reference": "b5ea3031679097897bb9a0d9c9fc78225a8c1cda"
+                "reference": "d3c550f8291c56e4c6e57684a7b1cdb3a1942bca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mirko-pagliai/php-thumber/zipball/b5ea3031679097897bb9a0d9c9fc78225a8c1cda",
-                "reference": "b5ea3031679097897bb9a0d9c9fc78225a8c1cda",
+                "url": "https://api.github.com/repos/mirko-pagliai/php-thumber/zipball/d3c550f8291c56e4c6e57684a7b1cdb3a1942bca",
+                "reference": "d3c550f8291c56e4c6e57684a7b1cdb3a1942bca",
                 "shasum": ""
             },
             "require": {
@@ -1298,7 +1300,9 @@
             },
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "^4.0",
-                "phpunit/phpunit": "^9.1|^9.5"
+                "phpstan/phpstan": "^1.7",
+                "phpunit/phpunit": "^9.1|^9.5",
+                "psalm/phar": "^4.24"
             },
             "type": "library",
             "autoload": {
@@ -1320,7 +1324,7 @@
             "homepage": "https://github.com/mirko-pagliai/php-thumber",
             "support": {
                 "issues": "https://github.com/mirko-pagliai/php-thumber/issues",
-                "source": "https://github.com/mirko-pagliai/php-thumber/tree/1.5.0"
+                "source": "https://github.com/mirko-pagliai/php-thumber/tree/1.5.1"
             },
             "funding": [
                 {
@@ -1328,20 +1332,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-04-28T15:17:35+00:00"
+            "time": "2022-09-20T13:24:17+00:00"
         },
         {
             "name": "mirko-pagliai/php-tools",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mirko-pagliai/php-tools.git",
-                "reference": "00e297c13a360d467be387df7f073f43c3961439"
+                "reference": "d61462a6c0da3e0bf0ff49bdecc514071fce4935"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mirko-pagliai/php-tools/zipball/00e297c13a360d467be387df7f073f43c3961439",
-                "reference": "00e297c13a360d467be387df7f073f43c3961439",
+                "url": "https://api.github.com/repos/mirko-pagliai/php-tools/zipball/d61462a6c0da3e0bf0ff49bdecc514071fce4935",
+                "reference": "d61462a6c0da3e0bf0ff49bdecc514071fce4935",
                 "shasum": ""
             },
             "require": {
@@ -1359,7 +1363,9 @@
             },
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "^4.0",
+                "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.1|^9.5",
+                "psalm/phar": "^4.24",
                 "psr/http-message": "^1.0",
                 "symfony/console": "^5.1|^6.0"
             },
@@ -1389,9 +1395,9 @@
             "homepage": "https://github.com/mirko-pagliai/php-tools",
             "support": {
                 "issues": "https://github.com/mirko-pagliai/php-tools/issues",
-                "source": "https://github.com/mirko-pagliai/php-tools/tree/1.6.1"
+                "source": "https://github.com/mirko-pagliai/php-tools/tree/1.6.2"
             },
-            "time": "2022-05-18T11:58:50+00:00"
+            "time": "2022-09-19T17:02:03+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -7388,7 +7394,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
