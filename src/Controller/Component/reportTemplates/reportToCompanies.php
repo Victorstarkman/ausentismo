@@ -156,7 +156,7 @@ declare(strict_types=1);
     <!-- SIGNATURE -->
     <div class="signature all">
         <?php if (!is_null($dataToShow->doctor->signature)) : ?>
-        <img src="<?= $dataToShow->doctor->signature; ?>" style="position: absolute;top: 80px;left: 230px;">
+        <img src="<?= $dataToShow->doctor->signature; ?>" style="position: absolute;top: 80px;left: 230px;max-width: 160px">
         <?php endif; ?>
         <div style="position: absolute;top: 100px; margin: 0;left: 350px;font-size: 11px;text-align: center;">
             <p style="margin: 0;"><?= strtoupper($dataToShow->doctor->name . ' ' . $dataToShow->doctor->lastname);?> </p>

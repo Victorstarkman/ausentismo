@@ -31,25 +31,25 @@
             <div class="pt-0 col-lg-4 col-sm-12">
                 <div class="form-group">
                     <?= $this->Form->control('patient.email', ['label' => 'Email *',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                 </div>
             </div>
             <div class="pt-0 col-lg-4 col-sm-12">
                 <div class="form-group">
-                    <?= $this->Form->control('patient.birthday', ['label' => 'Fecha de nacimiento *',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date', 'required' => true]); ?>
+                    <?= $this->Form->control('patient.birthday', ['label' => 'Fecha de nacimiento',
+                        'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date', 'required' => false]); ?>
                 </div>
             </div>
             <div class="pt-0 col-lg-4 col-sm-12">
                 <div class="form-group">
                     <?= $this->Form->control('patient.age', ['label' => 'Edad',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                 </div>
             </div>
             <div class="pt-0 col-lg-4 col-sm-12">
                 <div class="form-group">
                     <?= $this->Form->control('patient.address', ['label' => 'Domicilio',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                 </div>
             </div>
             <div class="pt-0 col-lg-4 col-sm-12">
@@ -68,7 +68,7 @@
             <div class="pt-0 col-lg-4 col-sm-12">
                 <div class="form-group">
                     <?= $this->Form->control('patient.seniority', ['label' => 'Antiguedad (años)',
-                        'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                 </div>
             </div>
             <div class="pt-0 col-lg-4 col-sm-12">
@@ -453,7 +453,7 @@
                         <?=  $this->Form->control('pathology', ['label' => 'Diagnóstico',
                             'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
