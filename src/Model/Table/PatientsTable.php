@@ -47,6 +47,10 @@ class PatientsTable extends Table
             'foreignKey' => 'patient_id',
         ]);
 
+        $this->hasMany('Irregularities', [
+            'foreignKey' => 'patient_id',
+        ]);
+
         $this->hasMany('ReportsWithoutCheck', [
             'className' => 'Reports',
             'foreignKey' => 'patient_id',
@@ -84,37 +88,10 @@ class PatientsTable extends Table
             ->notEmptyString('lastname');
 
         $validator
-            ->scalar('address')
-            ->maxLength('address', 25)
-            ->requirePresence('address', 'create')
-            ->notEmptyString('address');
-
-        $validator
-            ->scalar('birthday')
-            ->maxLength('birthday', 120)
-            ->requirePresence('birthday', 'create')
-            ->notEmptyString('birthday');
-
-        $validator
-            ->email('email')
-            ->allowEmptyString('email');
-
-        $validator
-            ->integer('age')
-            ->requirePresence('age', 'create')
-            ->notEmptyString('age');
-
-        $validator
             ->scalar('document')
             ->maxLength('document', 255)
             ->requirePresence('document', 'create')
             ->notEmptyString('document');
-
-        $validator
-            ->scalar('job')
-            ->maxLength('job', 120)
-            ->requirePresence('job', 'create')
-            ->notEmptyString('job');
 
         return $validator;
     }
