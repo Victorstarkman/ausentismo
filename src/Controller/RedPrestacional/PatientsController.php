@@ -230,11 +230,17 @@ class PatientsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             try {
                 $postData = $this->request->getData();
-                $patientEntity = $this->Patients->find('all')
-                    ->where(['OR' => [
+                $patientEntity = $this->Patients->find('all');
+                if (!empty($postData['email'])) {
+                    $patientEntity->where(['OR' => [
                         ['document' => $postData['document']],
                         ['email' => $postData['email']],
-                    ]])
+                    ]]);
+                } else {
+                    $patientEntity->where(['document' => $postData['document']]);
+                }
+
+                $patientEntity = $patientEntity
                     ->contain(['Reports'])
                     ->first();
                 if (!empty($patientEntity)) {
@@ -325,14 +331,19 @@ class PatientsController extends AppController
                     }
                     $postData = $this->request->getData();
                     $postData['user_id'] = $this->Authentication->getIdentity()->id;
-                    $patientEntity = $this->Patients->find('all')
-                        ->where(['OR' => [
+                    $patientEntity = $this->Patients->find('all');
+                    if (!empty($postData['email'])) {
+                        $patientEntity->where(['OR' => [
                             ['document' => $postData['document']],
                             ['email' => $postData['email']],
-                        ]])
+                        ]]);
+                    } else {
+                        $patientEntity->where(['document' => $postData['document']]);
+                    }
+
+                    $patientEntity = $patientEntity
                         ->contain(['Reports'])
                         ->first();
-
                     if (empty($patientEntity)) {
                         $patientEntity = $this->Patients->newEmptyEntity([]);
                     } elseif ($postData['type'] == 'new') {
