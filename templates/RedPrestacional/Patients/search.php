@@ -41,7 +41,7 @@
 </div>
 <div class="pt-0 col-lg-4 col-sm-12">
     <div class="form-group">
-        <?= $this->Form->control('email', ['label' => 'Email *',
+        <?= $this->Form->control('email', ['label' => 'Email',
             'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
     </div>
 </div>
@@ -59,14 +59,14 @@
 </div>
 <div class="pt-0 col-lg-4 col-sm-12">
     <div class="form-group">
-        <?= $this->Form->control('address', ['label' => 'Domicilio',
-            'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
+        <?= $this->Form->control('phone', ['label' => 'Telefono',
+            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
     </div>
 </div>
 <div class="pt-0 col-lg-4 col-sm-12">
     <div class="form-group">
-        <?= $this->Form->control('phone', ['label' => 'Telefono',
-            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+		<?= $this->Form->control('address', ['label' => 'Domicilio',
+			'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
     </div>
 </div>
 <?= $this->element('partForm/addCity', ['city' => !empty($patient) && isset($patient->city_id) ? $patient->city_id : null]); ?>
@@ -85,7 +85,7 @@
 <div class="pt-0 col-lg-4 col-sm-12">
     <div class="form-group">
         <?= $this->Form->control('company_id', ['label' => 'Empresa',
-            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione',
+            'class' => 'form-control form-control-blue m-0 col-12', 'required' => false, 'empty' => 'Seleccione',
             'options' => $companies]); ?>
     </div>
 </div>
