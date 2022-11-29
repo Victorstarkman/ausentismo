@@ -227,11 +227,6 @@ class ReportsController extends AppController
                         $errors .= '</br>Los días recomendados deben ser mayor a 0.';
                     }
 
-                    $today = strtotime(date('Y-m-d', strtotime('-3 day')));
-                    if (empty($data['startLicense']) || !(strtotime($data['startLicense'])  >= $today)) {
-                        $errors .= '</br>La fecha de inicio no puede ser mayor a 3 dias atras.';
-                    }
-
                     if (isset($data['otherDiag']) && (int)$data['otherDiag'] == 1) {
                         if (empty($data['pathology'])) {
                             $errors .= '</br>El diagnóstico no puede estar vacio.';
