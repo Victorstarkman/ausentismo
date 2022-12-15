@@ -144,7 +144,7 @@ class Report extends Entity
     public function getPathology()
     {
         if (isset($this->cie10)) {
-            $name = $this->cie10->name . '(' . $this->cie10->code . ')';
+            $name = $this->Cie10->name . '(' . $this->Cie10->code . ')';
         } elseif (!empty($this->cie10_id)) {
             $cie10Table = new Cie10Table();
             $cie10 = $cie10Table->get($this->cie10_id);
@@ -161,7 +161,7 @@ class Report extends Entity
     public function getPathologyCode()
     {
         if (isset($this->cie10)) {
-            $name = $this->cie10->code;
+            $name = $this->Cie10->code;
         } elseif (!empty($this->cie10_id)) {
             $cie10Table = new Cie10Table();
             $cie10 = $cie10Table->get($this->cie10_id);
