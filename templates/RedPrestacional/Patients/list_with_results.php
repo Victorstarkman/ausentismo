@@ -10,11 +10,14 @@
     </div>
     <div class="results">
         <div class="mx-auto form-group row col-lg-12 col-md-12">
-            <div class="pl-0 col-6">
+            <div class="pl-0 col-4">
                 <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva Auditoria</a>
             </div>
-            <div class="pl-0 col-6">
+            <div class="pl-0 col-4">
                 <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-agente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo Agente</a>
+            </div>
+            <div class="pl-0 col-4">
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/reporte-excel', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-file-excel" aria-hidden="true"></i>Reporte Excel</a>
             </div>
         </div>
         <p class="title-results">Auditorias</p>
