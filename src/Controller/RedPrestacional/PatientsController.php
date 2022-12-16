@@ -8,9 +8,8 @@ use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Exception\UnauthorizedException;
 use Cake\Routing\Router;
 use PhpOffice\PhpSpreadsheet\{Spreadsheet,IOFactory};
-use Cake\I18n;
 use Cake\I18n\FrozenDate;
-use Cake\I18n\FrozenTime;
+
 
 /**
  * Patients Controller
@@ -804,12 +803,13 @@ class PatientsController extends AppController
         //die();
         $now=FrozenDate::parse('now');
         $now= $now->i18nFormat('dd-MM-Y');
+
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment;filename=Agentes_'.$now.'.xlsx');
+		header('Content-Disposition: attachment;filename=Agentes.xlsx');
 		header('Cache-Control: max-age=0');
 		$writer =IOFactory::createWriter($spreadsheet, 'Xlsx');
 		$writer->save('php://output');   
-        $this->redirect(['action'=>'listWithResults']);
+        exit();
        
     }//fin de function
 }
