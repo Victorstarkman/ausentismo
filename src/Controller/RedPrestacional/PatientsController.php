@@ -8,6 +8,9 @@ use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Exception\UnauthorizedException;
 use Cake\Routing\Router;
 use PhpOffice\PhpSpreadsheet\{Spreadsheet,IOFactory};
+use Cake\I18n;
+use Cake\I18n\FrozenDate;
+use Cake\I18n\FrozenTime;
 
 /**
  * Patients Controller
@@ -696,11 +699,13 @@ class PatientsController extends AppController
             'Cities' => ['Counties' => 'States']
    
         ]);
-        $LicenseNames = $this->Patients->Reports->STATUSES;
+        $licenses = $this->Patients->Reports->getLicenses();
+        $statuses = $this->Patients->Reports->getAllStatuses();
+
         $patientsList = $patients->all()->toArray();
         $numList = $patients->all()->count();
-              debug ($LicenseNames);
-        die();      
+          /*  debug ($patientsList);
+        die();  */ 
        if ($numList!=0){
         $fila=2;
         $spreadsheet = new Spreadsheet();
@@ -715,44 +720,54 @@ class PatientsController extends AppController
                       ]      
                 ]    
             ];
+        $styleArrayTable= [
+            'alignment'=>[
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+            
+                'vertical' =>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER ]
+        ];
          //-----------------------titulos----------------------------------------
-         $activeSheet->getStyle('A1:O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+         $activeSheet->getStyle('A1:Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
          ->getStartColor()->setARGB('FF00aa99'); 
-         $activeSheet->getStyle('A1:O1')->applyFromArray($styleArray);
+         $activeSheet->getStyle('A1:Q1')->applyFromArray($styleArray);
          $activeSheet->getColumnDimension('A')->setWidth(10);
          $activeSheet->setCellValue('A1','#');
          $activeSheet->getColumnDimension('B')->setWidth(20);
          $activeSheet->setCellValue('B1','NOMBRE COMPLETO');
          $activeSheet->getColumnDimension('C')->setWidth(20);
          $activeSheet->setCellValue('C1','CUIL');
-         $activeSheet->getColumnDimension('D')->setWidth(20);
+         $activeSheet->getColumnDimension('D')->setWidth(10);
          $activeSheet->setCellValue('D1','EDAD');
-         $activeSheet->getColumnDimension('E')->setWidth(20);
+         $activeSheet->getColumnDimension('E')->setWidth(35);
          $activeSheet->setCellValue('E1','EMPRESA');
-         $activeSheet->getColumnDimension('F')->setWidth(35);
+         $activeSheet->getColumnDimension('F')->setWidth(25);
          $activeSheet->setCellValue('F1','CARGO');
-         $activeSheet->getColumnDimension('G')->setWidth(30);
+         $activeSheet->getColumnDimension('G')->setWidth(10);
          $activeSheet->setCellValue('G1','ANTIGUEDAD');
          $activeSheet->getColumnDimension('H')->setWidth(35);
          $activeSheet->setCellValue('H1','ESPECIALIDAD');
-         $activeSheet->getColumnDimension('I')->setWidth(35);
+         $activeSheet->getColumnDimension('I')->setWidth(25);
          $activeSheet->setCellValue('I1','ESTADO');
-         $activeSheet->getColumnDimension('J')->setWidth(35);
-         $activeSheet->setCellValue('J1','FECHA CREACIÓN');
-         $activeSheet->getColumnDimension('K')->setWidth(35);
-         $activeSheet->setCellValue('K1','TIPO DE SERVICIO');
-         $activeSheet->getColumnDimension('L')->setWidth(35);
+         $activeSheet->getColumnDimension('J')->setWidth(25);
+         $activeSheet->setCellValue('J1','FECHA INICIO LICENCIA');
+         $activeSheet->getColumnDimension('K')->setWidth(25);
+         $activeSheet->setCellValue('K1','TIPO DE LICENCIA');
+         $activeSheet->getColumnDimension('L')->setWidth(15);
          $activeSheet->setCellValue('L1','DIAS PEDIDOS');
-         $activeSheet->getColumnDimension('M')->setWidth(35);
+         $activeSheet->getColumnDimension('M')->setWidth(15);
          $activeSheet->setCellValue('M1','DIAS OTORGADOS');
-         $activeSheet->getColumnDimension('N')->setWidth(35);
-         $activeSheet->setCellValue('N1','DIAGNÓSTICO');
-         $activeSheet->getColumnDimension('O')->setWidth(35);
+         $activeSheet->getColumnDimension('N')->setWidth(20);
+         $activeSheet->setCellValue('N1','AUDITOR');
+         $activeSheet->getColumnDimension('O')->setWidth(45);
          $activeSheet->setCellValue('O1','DICTAMEN');
+         $activeSheet->getColumnDimension('P')->setWidth(25);
+         $activeSheet->setCellValue('P1','NUMERO CIE10');
+         $activeSheet->getColumnDimension('Q')->setWidth(25);
+         $activeSheet->setCellValue('Q1','FECHA AUDITORIA');
 
           //---------------------------------------------Fin de encabezado------------------------
         for($i=0;$i<$numList;$i++){
-             if(!empty($patientsList[$i]['reports'] )){     
+             if(!empty($patientsList[$i]['reports'] )){ 
                 $activeSheet->setCellValue('A'.$fila,$patientsList[$i]['id']);
                 $activeSheet->setCellValue('B'.$fila,$patientsList[$i]['name'].$patientsList[$i]['lastname']);
                 $activeSheet->setCellValue('C'.$fila,$patientsList[$i]['document']);
@@ -760,16 +775,37 @@ class PatientsController extends AppController
                 $activeSheet->setCellValue('E'.$fila,$patientsList[$i]['company']->name);
                 $activeSheet->setCellValue('F'.$fila,$patientsList[$i]['job']);
                 $activeSheet->setCellValue('G'.$fila,$patientsList[$i]['seniority']);
-                isset($patientsList[$i]['reports'][0]['specialty']->name)?$activeSheet->setCellValue('H'.$fila,$patientsList[$i]['reports'][0]['specialty']->name):$activeSheet->setCellValue('H'.$fila,'');
-                $activeSheet->setCellValue('I'.$fila,$patientsList[$i]['reports'][0]['status']);
-                //$activeSheet->setCellValue('J'.$fila,$patientsList[$i]['reports'][0]['startLicence']->date);
-
+                $cantidad_reportes= count($patientsList[$i]['reports'])-1;
+                isset($patientsList[$i]['reports'][$cantidad_reportes]['specialty']->name)?$activeSheet->setCellValue('H'.$fila,$patientsList[$i]['reports'][$cantidad_reportes]['specialty']->name):$activeSheet->setCellValue('H'.$fila,'');
+                $status=$patientsList[$i]['reports'][$cantidad_reportes]['status'];
+                $activeSheet->setCellValue('I'.$fila,$statuses[$status]);
+                $frozenDate= $patientsList[$i]['reports'][$cantidad_reportes]['startLicense'];
+                $startLicense=isset($frozenDate)?$frozenDate->i18nFormat('dd-MM-YYY'):'No Registrado';
+                $activeSheet->setCellValue('J'.$fila,$startLicense);
+                $type= $patientsList[$i]['reports'][$cantidad_reportes]['type'];
+                $activeSheet->setCellValue('K'.$fila,$licenses[$type]);
+                $activeSheet->setCellValue('L'.$fila,$patientsList[$i]['reports'][$cantidad_reportes]['askedDays']);
+                $activeSheet->setCellValue('M'.$fila,$patientsList[$i]['reports'][$cantidad_reportes]['recommendedDays']);
+                $dictamen=isset($patientsList[$i]['reports'][$cantidad_reportes]['cie10'])?$patientsList[$i]['reports'][$cantidad_reportes]['cie10']->name:'No especificado';
+                $activeSheet->setCellValue('N'.$fila,$patientsList[$i]['reports'][$cantidad_reportes]['doctor']->name.' '.$patientsList[$i]['reports'][$cantidad_reportes]['doctor']->lastname);
+                $activeSheet->setCellValue('O'.$fila,$dictamen);
+                $codeCie10=isset($patientsList[$i]['reports'][$cantidad_reportes]['cie10'])?$patientsList[$i]['reports'][$cantidad_reportes]['cie10']->code:'No especificado';
+                $activeSheet->setCellValue('P'.$fila,$codeCie10);
+                $frozenDateCreated= $patientsList[$i]['reports'][$cantidad_reportes]['created'];
+                $auditoriaCreation=isset($frozenDateCreated)?$frozenDateCreated->i18nFormat('dd-MM-YYY'):'No Registrado';
+                //debug($frozenDateCreated);
+                $activeSheet->setCellValue('Q'.$fila,$auditoriaCreation);
                 $fila++;        
             } //fin de if dentro de report
         }//fin de for
        }//fin de if
+        //die();
+        $activeSheet->getStyle('A2:Q'.$fila)->applyFromArray($styleArrayTable);
+        //die();
+        $now=FrozenDate::parse('now');
+        $now= $now->i18nFormat('dd-MM-Y');
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment;filename="Candidatos.xlsx"');
+		header('Content-Disposition: attachment;filename=Agentes_'.$now.'.xlsx');
 		header('Cache-Control: max-age=0');
 		$writer =IOFactory::createWriter($spreadsheet, 'Xlsx');
 		$writer->save('php://output');   
@@ -777,21 +813,3 @@ class PatientsController extends AppController
        
     }//fin de function
 }
-/* 
-'name' => true,
-        'lastname' => true,
-        'address' => true,
-        'birthday' => true,
-        'email' => true,
-        'age' => true,
-        'document' => true,
-        'job' => true,
-        'created' => true,
-        'modified' => true,
-        'reports' => true,
-        'phone' => true,
-        'city_id' => true,
-        'company_id' => true,
-        'companies.name'=>true,
-        'seniority'=>true 
-*/
